@@ -4,7 +4,7 @@ import Navigator from '../components/Navigator';
 const HomePage = () => {
   return (
     <>
-      <Navigator className="" />
+      <Navigator />
       Home page. Display images and chatrooms here?
     </>
   );

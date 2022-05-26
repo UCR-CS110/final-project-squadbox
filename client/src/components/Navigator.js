@@ -5,23 +5,22 @@ import {
 
 const Navigator = () => {
 
-  const divStyle = {
-    width: "100%",
-    minHeight: "50px",
-    padding: "5px",
-  }
   return (
-    <div>
-      <nav className="" style={ divStyle }>
+    <div className="w-full shadow-sm">
+
+      <div>
+        <span>SquadBox</span>
+      </div>
+
+      <nav className="" >
         <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
           <ul>
-            <li><Link to="login">Login</Link></li>
-            <li><Link to="signup">Signup</Link></li>
+            <li><Link to="login">Sign in</Link></li>
           </ul>
         </div>
       </nav>
     </div>
-  )
+  );
 }
 
 export default Navigator;

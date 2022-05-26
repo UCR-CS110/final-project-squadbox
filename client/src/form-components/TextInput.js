@@ -11,13 +11,13 @@ const TextInput = ({ label, name, register, required, type, placeholder }) => {
           name={name}
           type={type}
           placeholder={placeholder}
-          className="block w-full px-5 py-3 text-base text-neutral-600 placeholder-gray-300 
-          transform border border-transparent rounded-lg bg-gray-50 focus:outline-none focus:border-transparent
-          focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-300"
+          className="block w-full text-gray-900 ring-gray-900 ring-opacity-5 
+          placeholder-gray-400 appearance-none bg-white rounded-md px-3 py-2 border border-transparent
+          shadow ring-1 sm:text-sm mb-4 focus:border-teal-500 focus:ring-teal-500 focus:outline-none"
         />
       </div>
     </div>
   )
 }
 
-export default TextInput
+export default TextInput;
