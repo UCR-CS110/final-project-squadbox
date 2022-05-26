@@ -2,23 +2,21 @@ import React from 'react'
 import {
   Link
 } from 'react-router-dom';
+import NavLinks from './NavLinks';
 
 const Navigator = () => {
+  let isLoggedIn = false;
 
   return (
-    <div className="w-full shadow-sm">
+    <div className="w-full shadow-sm flex justify-between items-center p-4 h-12">
 
       <div>
         <span>SquadBox</span>
       </div>
 
-      <nav className="" >
-        <div className="inline-flex items-center gap-2 list-none lg:ml-auto">
-          <ul>
-            <li><Link to="login">Sign in</Link></li>
-          </ul>
-        </div>
-      </nav>
+      <div>
+        <NavLinks isLoggedIn={isLoggedIn} />
+      </div>
     </div>
   );
 }
