@@ -1,0 +1,3 @@
+{
+    "mongoURI": "mongodb+srv://Admin:Password@cluster0.quryt.mongodb.net/?retryWrites=true&w=majority"
+}
