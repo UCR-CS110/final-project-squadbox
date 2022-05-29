@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom';
 
 const NavLinks = (props) => {
 
@@ -23,7 +24,8 @@ const UserLinks = () => {
   
     return (
       <div>
-        Guest
+        <Link to="/login">Sign In</Link>
+        <Link to="/signup" className="pl-2">Sign Up</Link>
       </div>
     );
   }

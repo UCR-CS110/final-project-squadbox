@@ -15,7 +15,7 @@ const schema = yup.object({
 
 const Login = ({ setToken }) => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({
-  resolver: yupResolver(schema)
+    resolver: yupResolver(schema)
   });
 
   const onSubmit = async(data) => {

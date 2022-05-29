@@ -11,7 +11,7 @@ const Navigator = () => {
     <div className="w-full shadow-sm flex justify-between items-center p-4 h-12">
 
       <div>
-        <span>SquadBox</span>
+        <span><Link to="/">SquadBox</Link></span>
       </div>
 
       <div>

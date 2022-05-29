@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import { TextInput } from '../form-components';
+import { TextInput, FormSubmit } from '../form-components';
 
 const schema = yup.object({
   username: yup.string().required(),
@@ -19,14 +19,13 @@ const Signup = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="w-full">
       <div className="flex flex-col">
-        Login
-        <TextInput label="Username" name="username" register={register} required={true} placeholder="Your username" />
+        <TextInput name="username" register={register} required={true} placeholder="Username" />
         {errors.username ? errors.username.message : ''}
-        <TextInput label="Email" name="email" register={register} required={true} placeholder="Your Email" />
+        <TextInput name="email" register={register} required={true} placeholder="Email" />
         {errors.email ? errors.email.message : ''}
-        <TextInput label="Password" name="password" register={register} required={true} placeholder="Your password" type="password"/>
+        <TextInput name="password" register={register} required={true} placeholder="Password" type="password"/>
         {errors.password ? errors.password.message : ''}
-        <button type="submit">Submit</button>
+        <FormSubmit text="Sign in"/>
       </div>
     </form>
   );
