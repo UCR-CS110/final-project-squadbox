@@ -18,6 +18,10 @@ const MessageSchema = new Schema({
     timestamp: { 
         type: Date,
         default: Date.now
+    },
+    vote: {
+        type: Number,
+        default: 0
     }
 });
 

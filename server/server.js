@@ -3,6 +3,9 @@ const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config');
 const Profile = require('./models/profile');
+const Room = require('./models/room');
+const Message = require('./models/messages');
+const  roomIdGenerator  = require('./util/roomIdGenerator');
 
 const app = express();
 const port = 8080;
@@ -30,6 +33,16 @@ mongoose.connect(db, err => {
 });
 
 // Endpoints
+
+app.post("/create", function(req, res){
+    console.log(req);
+    const newRoom =  new Room({
+        name: req.body.name,
+        id: roomIdGenerator.roomIdGenerator()
+    })
+    newRoom.save().then(console.log("Room has been added!")).catch(err => console.log("Error when creating room!"))
+});
+
 app.post('/createProfile', function(req, res) {
     console.log(req);
     const newProfile = new Profile({
@@ -40,6 +53,32 @@ app.post('/createProfile', function(req, res) {
 
     newProfile.save().then(console.log("Profile has been created!"))
         .catch(err => console.log("Error when creating a profile: ", err));
+});
+
+
+app.post("/createMessage", function(req, res){
+    const newMessage =  new Message({
+        nickname: req.body.nickname,
+        message: req.body.message,
+        roomName: req.body.roomName,
+        timestamp: req.body.timestamp,
+        vote: req.body.vote
+    })
+    newMessage.save().then(console.log("Message has been added!")).catch(err => console.log("Error when creating room!"))
+});
+
+
+app.post("/upvoteMessage", function(req, res){
+    //newMessage.save().then(console.log("Message has been added!")).catch(err => console.log("Error when creating room!"))
+    Message.update({nickname: req.body.nickname},
+                    {message: req.body.message},
+                    {$set: {'vote': req.body.vote+1}});
+});
+
+app.get("/", function(req, res){
+    Room.find().lean().then(items => {
+        response.render('home', {title: 'home', rooms: items, isAvailable: true});
+    })
 });
 
 app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));
