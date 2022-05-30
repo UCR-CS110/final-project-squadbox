@@ -75,6 +75,12 @@ app.post("/upvoteMessage", function(req, res){
                     {$set: {'vote': req.body.vote+1}});
 });
 
+app.get("/searchMessage", function(req, res){
+    Message.find({message: req.body.search}).lean.then(items => {
+        response,render('messages', {title: 'messages', messages: items, isAvailable: true});
+    })
+})
+
 app.get("/", function(req, res){
     Room.find().lean().then(items => {
         response.render('home', {title: 'home', rooms: items, isAvailable: true});
