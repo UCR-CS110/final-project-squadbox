@@ -2,11 +2,10 @@ import React from 'react';
 import Navigator from '../components/Navigator';
 import { Link } from 'react-router-dom';
 import { PostForm } from '../forms';
-import userSession from '../helpers/userSession'
 
 const HomePage = () => {
-  console.log(userSession)
-  if(userSession.getName !== "") { // User is not signed in
+  console.log(localStorage.getItem("username"))
+  if(localStorage.getItem("username") !== "") { // User is signed in
     return (
       <>
         <Navigator />
@@ -31,7 +30,7 @@ const HomePage = () => {
       </>
     );
   }
-  else { // User is signed in
+  else { // User is not signed in
     return (
       <>
         <Navigator />

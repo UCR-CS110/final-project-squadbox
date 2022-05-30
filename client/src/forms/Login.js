@@ -7,6 +7,7 @@ import {
     TextInput,
 } from '../form-components';
 import { loginUser } from '../helpers/api';
+
 const axios = require('axios');
 
 
@@ -23,15 +24,13 @@ const Login = ({ setToken }) => {
   const onSubmit = (data) => {
     axios.post('http://localhost:8080/login', data)
     .then( (res) => {
-      console.log(res.data);
-      console.log("reaches here")
-      if (res.status === "error") {
-        console.log("reaches here 1")
-        // show user that error
+      if (res.data === true) {
+        // redirect user to home page and save their name
+        localStorage.setItem("username", data.username)
       }
-      else if (res.status === "ok") {
-        console.log("reaches here 2")
-        // redirect user to home page
+      else if (res.data === false) {
+        console.log("Error signing in")
+        // show user that error
       }
     })
     .catch( (err) => {
