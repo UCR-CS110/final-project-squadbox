@@ -27,6 +27,7 @@ const Login = ({ setToken }) => {
       if (res.data === true) {
         // redirect user to home page and save their name
         localStorage.setItem("username", data.username)
+        window.location.href = '/';
       }
       else if (res.data === false) {
         console.log("Error signing in")
