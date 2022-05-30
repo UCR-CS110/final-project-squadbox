@@ -42,4 +42,16 @@ app.post('/createProfile', function(req, res) {
         .catch(err => console.log("Error when creating a profile: ", err));
 });
 
+app.post('/login', function(req, res) {
+    const profiles = mongoose.model('profile');
+    profiles.exists({username: req.body.username, password: req.body.password}, err => {
+        if(err) {
+            res.send(false);
+        }
+        else {
+            res.send(true) 
+        }
+    });
+});
+
 app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));
