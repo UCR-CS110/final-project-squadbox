@@ -43,13 +43,12 @@ app.post('/createProfile', function(req, res) {
 });
 
 app.post('/login', function(req, res) {
-    const profiles = mongoose.model('profile');
-    profiles.exists({username: req.body.username, password: req.body.password}, err => {
-        if(err) {
-            res.send(false);
+    Profile.find({username: req.body.username, password: req.body.password}).lean().then(item => {
+        if(item.length === 0){
+            res.json(false);
         }
         else {
-            res.send(true) 
+            res.json(true);
         }
     });
 });
