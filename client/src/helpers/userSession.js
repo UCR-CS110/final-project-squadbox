@@ -1,7 +1,5 @@
-import { useState } from 'react';
-
-let userSession = () => {
-  const [username, setUsername] = useState("");
+let UserSession = () => {
+  let username = "";
 
   const getName = () => {
     if (username === "") {
@@ -15,13 +13,13 @@ let userSession = () => {
   }
 
   const setName = (name) => {
-    setUsername(name);
+    username = name;
   }
 
   return {
-    getUsername: getName,
-    setUsername: setName,
+    getName: getName,
+    setName: setName,
   }
 }
 
-export default userSession;
+export default UserSession;

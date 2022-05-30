@@ -1,6 +1,7 @@
 import React from 'react';
 import { LoginForm } from '../forms';
 import { Link } from 'react-router-dom';
+import userSession from '../helpers/userSession'
 
 const LoginPage = (props) => {
   let loggedIn = false;
