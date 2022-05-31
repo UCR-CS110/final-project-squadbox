@@ -68,23 +68,31 @@ app.post("/createMessage", function(req, res){
 });
 
 
+
 app.post("/upvoteMessage", function(req, res){
     //newMessage.save().then(console.log("Message has been added!")).catch(err => console.log("Error when creating room!"))
-    Message.update({nickname: req.body.nickname},
+    Message.updateOne({nickname: req.body.nickname},
                     {message: req.body.message},
                     {$set: {'vote': req.body.vote+1}});
 });
 
+app.post("/downvoteMessage", function(req, res){
+    //newMessage.save().then(console.log("Message has been added!")).catch(err => console.log("Error when creating room!"))
+    Message.updateOne({nickname: req.body.nickname},
+                    {message: req.body.message},
+                    {$set: {'vote': req.body.vote-1}});
+});
+
 app.get("/searchMessage", function(req, res){
     Message.find({message: req.body.search}).lean.then(items => {
-        response,render('messages', {title: 'messages', messages: items, isAvailable: true});
+        response.render('messages', {title: 'messages', messages: items, isAvailable: true});
     })
 })
 
-app.get("/", function(req, res){
+app.get("/getRooms", function(req, res){
     Room.find().lean().then(items => {
-        response.render('home', {title: 'home', rooms: items, isAvailable: true});
-    })
+        res.json(items)
+    }).then("DONE CALLING ROOMS")
 });
 
 app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));
