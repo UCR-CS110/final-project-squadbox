@@ -8,6 +8,9 @@ import {
 } from '../form-components';
 import { loginUser } from '../helpers/api';
 
+const axios = require('axios');
+
+
 const schema = yup.object({
   username: yup.string().required(),
   password: yup.string().required(),
@@ -18,10 +21,22 @@ const Login = ({ setToken }) => {
     resolver: yupResolver(schema)
   });
 
-  const onSubmit = async(data) => {
-    const token = await loginUser({ data });
-    setToken(token);
-    console.log("Logged in with: " + token);
+  const onSubmit = (data) => {
+    axios.post('http://localhost:8080/login', data)
+    .then( (res) => {
+      if (res.data === true) {
+        // redirect user to home page and save their name
+        localStorage.setItem("username", data.username)
+        window.location.href = '/';
+      }
+      else if (res.data === false) {
+        console.log("Error signing in")
+        // show user that error
+      }
+    })
+    .catch( (err) => {
+      console.log(err);
+    });
   }
 
   return (

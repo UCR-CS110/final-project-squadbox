@@ -42,4 +42,15 @@ app.post('/createProfile', function(req, res) {
         .catch(err => console.log("Error when creating a profile: ", err));
 });
 
+app.post('/login', function(req, res) {
+    Profile.find({username: req.body.username, password: req.body.password}).lean().then(item => {
+        if(item.length === 0){
+            res.json(false);
+        }
+        else {
+            res.json(true);
+        }
+    });
+});
+
 app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));

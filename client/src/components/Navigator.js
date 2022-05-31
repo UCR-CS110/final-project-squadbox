@@ -5,8 +5,6 @@ import {
 import NavLinks from './NavLinks';
 
 const Navigator = () => {
-  let isLoggedIn = false;
-
   return (
     <div className="w-full shadow-sm flex justify-between items-center p-4 h-12">
 
@@ -15,7 +13,7 @@ const Navigator = () => {
       </div>
 
       <div>
-        <NavLinks isLoggedIn={isLoggedIn} />
+        <NavLinks />
       </div>
     </div>
   );
