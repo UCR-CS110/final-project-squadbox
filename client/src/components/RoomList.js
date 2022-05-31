@@ -30,6 +30,7 @@ const RoomList = () => {
         <div >
             This is my room list
             {rooms.map(room => <Link to={"/room/" + room.name}>{room.name}</Link>)}
+            <br></br>
         </div>
     );
 }

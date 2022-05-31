@@ -92,7 +92,7 @@ app.get("/searchMessage", function(req, res){
 app.get("/getRooms", function(req, res){
     Room.find().lean().then(items => {
         res.json(items)
-    }).then("DONE CALLING ROOMS")
+    })
 });
 
 app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));
