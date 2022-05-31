@@ -14,18 +14,18 @@ const HomePage = () => {
           <PostForm />
         </div>
         {/* For each post / room - make an element  */}
-        <RoomList/>
+        <RoomList />
       </div>
     </>
   );
 }
 
-async function getrooms(){
-  const rooms = await fetch('http://localhost:8080/getRooms')
-  .then(response=>response.json())
-  //.then(data=>rooms=data);
-  .then(console.log(rooms))
- // console.log(rooms);
-}
+// async function getrooms(){
+//   const rooms = await fetch('http://localhost:8080/getRooms')
+//   .then(response=>response.json())
+//   //.then(data=>rooms=data);
+//   .then(console.log(rooms))
+//  // console.log(rooms);
+// }
 
 export default HomePage;
