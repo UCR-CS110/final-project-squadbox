@@ -1,0 +1,4 @@
+Make this into a json file and add mongodb info
+{
+    "mongoURI": "mongodbsrv://Admin:Password@cluster0.quryt.mongodb.net/?retryWrites=true&w=majority"
+}

@@ -1,21 +1,23 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
 
-const NavLinks = (props) => {
+const NavLinks = () => {
 
-  if (props.isLoggedIn) {
-    return (<UserLinks />);
+  let name = localStorage.getItem("username");
+
+  if (name !== null) {
+    return (<UserLinks name={name}/>);
   }
   else {
     return (<GuestLinks />);
   }
 }
 
-const UserLinks = () => {
+const UserLinks = ({ name }) => {
 
     return (
       <div>
-        User
+        <b>{name}</b>
       </div>
     );
   }

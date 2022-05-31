@@ -8,6 +8,7 @@ import {
     SignupPage,
     LoginPage,
     PostPage,
+    RoomPage,
   } from './pages';
 
 function App() {
@@ -20,8 +21,8 @@ function App() {
           <Route index element={<HomePage />} />
           <Route path="signup" element={<SignupPage />} />
           <Route path="login" element={<LoginPage />} />
-          <Route path="post">
-            <Route path=":postId" element={<PostPage />} />
+          <Route path="room">
+            <Route path=":roomId" element={<RoomPage />} />
           </Route>
         </Route>
       </Routes>

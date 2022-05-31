@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-let userSession = () => {
+let UserSession = () => {
   const [username, setUsername] = useState("");
 
   const getName = () => {
@@ -24,4 +24,5 @@ let userSession = () => {
   }
 }
 
-export default userSession;
+
+export default UserSession;
