@@ -6,3 +6,8 @@ export async function loginUser(credentials) {
       console.log(res);  
     });
 }
+
+export async function fetchRooms() {
+  let res = await axios.get('http://localhost:8080/getRooms');
+  return res.data;
+}

@@ -1,31 +1,47 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Navigator from '../components/Navigator';
 import RoomList from '../components/RoomList';
-import { Link } from 'react-router-dom';
 import { PostForm } from '../forms';
+import { fetchRooms } from '../helpers/api';
 
 const HomePage = () => {
+  const [rooms, setRooms] = useState([]);
+
+  const refreshRooms = async () => {
+    fetchRooms()
+    .then((roomList) =>  {
+      setRooms(roomList);
+    });
+  }
+
+  setInterval(refreshRooms , 10000);
+
+  const onSubmit = async (data) => {
+    console.log(data)
+    fetch('http://localhost:8080/create', {
+    method: 'POST',
+    mode: 'cors', // this cannot be 'no-cors'
+    headers: {'Content-Type': 'application/json'}, //NOT SURE ABOUT THIS PART
+    body: JSON.stringify({
+      name: data.name
+    })});
+  }
+
+  useEffect( () => {
+    refreshRooms();
+  }, []);
 
   return (
     <>
       <Navigator />
       <div className="flex flex-col items-center mt-10">
         <div>
-          <PostForm />
+          <PostForm onSubmit={onSubmit}/>
         </div>
-        {/* For each post / room - make an element  */}
-        <RoomList />
+          <RoomList rooms={rooms}/>
       </div>
     </>
   );
 }
-
-// async function getrooms(){
-//   const rooms = await fetch('http://localhost:8080/getRooms')
-//   .then(response=>response.json())
-//   //.then(data=>rooms=data);
-//   .then(console.log(rooms))
-//  // console.log(rooms);
-// }
 
 export default HomePage;
