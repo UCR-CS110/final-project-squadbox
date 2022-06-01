@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import Navigator from '../components/Navigator';
 import RoomList from '../components/RoomList';
 import MessageList from '../components/MessageList';
+import Searchbar from '../forms/searchbar';
 import { CommentForm } from '../forms';
 
 const RoomPage = () => {
@@ -13,8 +14,8 @@ const RoomPage = () => {
       <Navigator />
       Room #: {roomId}
       <div>
+        <Searchbar roomId={roomId}/>
         <CommentForm roomId={roomId}/>
-        <CommentForm />
         <MessageList/>
       </div>
     </div>

@@ -84,9 +84,9 @@ app.post("/downvoteMessage", function(req, res){
                     {$set: {'vote': req.body.vote-1}});
 });
 
-app.get("/searchMessage", function(req, res){
-    Message.find({message: req.body.search}).lean.then(items => {
-        response.render('messages', {title: 'messages', messages: items, isAvailable: true});
+app.post("/searchMessage", function(req, res){
+    Message.find({message: req.body.message, roomName:req.body.roomId}).lean.then(items => {
+        res.json(items)
     })
 })
 
@@ -99,7 +99,8 @@ app.get("/getRooms", function(req, res){
 
 app.get("/getMessages", function(req, res){
     console.log(req.body)
-    Message.find({roomName: req.body.roomName}).lean().then(items => {
+  //  Message.find({roomName: req.body.roomName}).lean().then(items => {
+    Message.find().lean().then(items => {
         res.json(items)
     })
 })
