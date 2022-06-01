@@ -1,6 +1,8 @@
 import React from 'react'
 import { useParams } from 'react-router-dom';
 import Navigator from '../components/Navigator';
+import RoomList from '../components/RoomList';
+import MessageList from '../components/MessageList';
 import { CommentForm } from '../forms';
 
 const RoomPage = () => {
@@ -12,6 +14,8 @@ const RoomPage = () => {
       Room #: {roomId}
       <div>
         <CommentForm roomId={roomId}/>
+        <CommentForm />
+        <MessageList/>
       </div>
     </div>
   ) : (
