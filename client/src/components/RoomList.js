@@ -29,7 +29,7 @@ const RoomList = () => {
     return (
         <div >
             This is my room list
-            {rooms.map(room => <Link to={"/room/" + room.name}>{room.name}</Link>)}
+            {rooms.map(room => <div><Link to={"/room/" + room.name}>{room.name}</Link></div>)}
             <br></br>
         </div>
     );
