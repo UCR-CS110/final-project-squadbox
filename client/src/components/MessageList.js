@@ -22,10 +22,10 @@ const MessageList = () => {
 
   async function getmessages(){
     //  let rooms;
-      await fetch(`http://localhost:8080/getMessages/:${message.roomName}`)
-      .then(response=>response.json())
-      //.then(data=>rooms=data);
-      .then(updateMessages);
+      // await fetch(`http://localhost:8080/getMessages/:${message.roomName}`)
+      // .then(response=>response.json())
+      // //.then(data=>rooms=data);
+      // .then(updateMessages);
       // console.log(rooms);
     }
 
