@@ -4,8 +4,8 @@ import Room from '../components/Room';
 const RoomList = ({ rooms }) => {
 
   return (
-    <div >
-      This is my room list
+    <div>
+      <h1>Rooms</h1>
       {rooms.map(room => <Room key={room.name} room={room}/>)}
       <br></br>
     </div>

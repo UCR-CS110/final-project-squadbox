@@ -57,14 +57,15 @@ app.post('/createProfile', function(req, res) {
 
 
 app.post("/createMessage", function(req, res){
+    console.log(req.body)
     const newMessage =  new Message({
         nickname: req.body.nickname,
         message: req.body.message,
         roomName: req.body.roomName,
-        timestamp: req.body.timestamp,
-        vote: req.body.vote
+        // timestamp: req.body.timestamp, NOT NEEDED CAUSE SCHEMA ADDS IT
+        vote: 0
     })
-    newMessage.save().then(console.log("Message has been added!")).catch(err => console.log("Error when creating room!"))
+    newMessage.save().then(console.log("Message has been added!")).catch(err => console.log("Error when creating message!"))
 });
 
 
@@ -94,6 +95,14 @@ app.get("/getRooms", function(req, res){
         res.json(items)
     })
 });
+
+
+app.get("/getMessages", function(req, res){
+    console.log(req.body)
+    Message.find({roomName: req.body.roomName}).lean().then(items => {
+        res.json(items)
+    })
+})
 
 app.post('/login', function(req, res) {
     Profile.find({username: req.body.username, password: req.body.password}).lean().then(item => {

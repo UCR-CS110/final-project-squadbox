@@ -22,7 +22,7 @@ const Signup = () => {
     mode: 'cors', // this cannot be 'no-cors'
     headers: {'Content-Type': 'application/json'}, //NOT SURE ABOUT THIS PART
     body: JSON.stringify({
-      username: data.username,
+      nickname: data.username,
       password: data.password,
       email: data.email
     })
