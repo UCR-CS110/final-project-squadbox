@@ -93,6 +93,8 @@ app.get("/getRooms", function(req, res){
     Room.find().lean().then(items => {
         res.json(items)
     })
+});
+
 app.post('/login', function(req, res) {
     Profile.find({username: req.body.username, password: req.body.password}).lean().then(item => {
         if(item.length === 0){
