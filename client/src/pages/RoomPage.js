@@ -11,7 +11,7 @@ const RoomPage = () => {
       <Navigator />
       Room #: {roomId}
       <div>
-        <CommentForm />
+        <CommentForm roomId={roomId}/>
       </div>
     </div>
   ) : (
