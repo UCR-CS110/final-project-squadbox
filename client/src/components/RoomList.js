@@ -1,50 +1,15 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import React from 'react'
+import Room from '../components/Room';
 
-const RoomList = () => {
-  const [rooms, setRooms] = useState([]);
+const RoomList = ({ rooms }) => {
 
-  setInterval(function(){getrooms()}, 10000);
-
-  const updateRooms = (rooms) => {
-    setRooms([]);
-    rooms.forEach( (room) => {
-      // console.log(room.name)
-      setRooms([...rooms, {
-        name: room.name,
-      }])
-    })
-  }
-
-  async function getrooms(){
-    //  let rooms;
-      await fetch('http://localhost:8080/getRooms')
-      .then(response=>response.json())
-      //.then(data=>rooms=data);
-      .then(updateRooms);
-      // console.log(rooms);
-    }
-
-
-    return (
-        <div >
-            This is my room list
-            {rooms.map(room => <div><Link to={"/room/" + room.name}>{room.name}</Link></div>)}
-            <br></br>
-        </div>
-    );
+  return (
+    <div>
+      <h1>Rooms</h1>
+      {rooms.map(room => <Room key={room.name} room={room}/>)}
+      <br></br>
+    </div>
+  );
 }
-
-var rooms;
-
-
-
- // const RoomListArray = rooms.map((data) => {
-   // return (
-     // <div>
-       // <Link to="/room/:{data.id}" />
-        //</div>
-    //)
-  //})
 
 export default RoomList;
