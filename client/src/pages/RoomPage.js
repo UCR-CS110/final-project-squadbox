@@ -14,7 +14,6 @@ const RoomPage = () => {
       Room #: {roomId}
       <div>
         <CommentForm roomId={roomId}/>
-        <CommentForm />
         <MessageList/>
       </div>
     </div>
