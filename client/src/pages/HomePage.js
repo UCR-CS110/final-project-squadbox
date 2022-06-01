@@ -1,9 +1,11 @@
 import React from 'react';
 import Navigator from '../components/Navigator';
+import RoomList from '../components/RoomList';
 import { Link } from 'react-router-dom';
 import { PostForm } from '../forms';
 
 const HomePage = () => {
+
   return (
     <>
       <Navigator />
@@ -11,22 +13,19 @@ const HomePage = () => {
         <div>
           <PostForm />
         </div>
-
         {/* For each post / room - make an element  */}
-        <ul>
-          <li>
-            Post 1
-            <Link to="/">Room 1</Link>
-          </li>
-          <li>
-            Post 2
-            <a>Link 2</a>
-          </li>
-        </ul>
-        
+        <RoomList />
       </div>
     </>
   );
 }
+
+// async function getrooms(){
+//   const rooms = await fetch('http://localhost:8080/getRooms')
+//   .then(response=>response.json())
+//   //.then(data=>rooms=data);
+//   .then(console.log(rooms))
+//  // console.log(rooms);
+// }
 
 export default HomePage;
