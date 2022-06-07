@@ -57,7 +57,6 @@ app.post('/createProfile', function(req, res) {
 
 
 app.post("/createMessage", function(req, res){
-    console.log(req.body)
     const newMessage =  new Message({
         nickname: req.body.nickname,
         message: req.body.message,
@@ -97,10 +96,9 @@ app.get("/getRooms", function(req, res){
 });
 
 
-app.get("/getMessages", function(req, res){
-    console.log(req.body)
-  //  Message.find({roomName: req.body.roomName}).lean().then(items => {
-    Message.find().lean().then(items => {
+app.get("/getMessages/:roomId", function(req, res){
+    console.log(req.params.roomId)
+    Message.find({roomID: req.params.roomId}).lean().then(items => {
         res.json(items)
     })
 })

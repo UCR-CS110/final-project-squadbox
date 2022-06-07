@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 
-const MessageList = () => {
+const MessageList = (props) => {
   const [messages, setMessages] = useState([]);
 
   setInterval(function(){getmessages()}, 10000);
@@ -9,7 +9,7 @@ const MessageList = () => {
   const updateMessages = (messages) => {
     setMessages([]);
     messages.forEach( (message) => {
-       console.log(message.nickname)
+       //console.log(message.nickname)
       setMessages([...messages, {
         nickname: message.nickname,
         message: message.message,
@@ -22,11 +22,9 @@ const MessageList = () => {
 
   async function getmessages(){
     //  let rooms;
-      await fetch('http://localhost:8080/getMessages/')
+      await fetch(`http://localhost:8080/getMessages/${props.roomId}`)
       .then(response=>response.json())
-      //.then(data=>rooms=data);
       .then(updateMessages);
-      // console.log(rooms);
     }
 
 

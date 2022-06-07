@@ -16,7 +16,7 @@ const RoomPage = () => {
       <div>
         <Searchbar roomId={roomId}/>
         <CommentForm roomId={roomId}/>
-        <MessageList/>
+        <MessageList roomId={roomId}/>
       </div>
     </div>
   ) : (

@@ -6,12 +6,10 @@ const Comment = (props) => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
   const onSubmit = data => {
-    console.log("reaches here too")
-    console.log(data)
     fetch('http://localhost:8080/createMessage', {
     method: 'POST',
     mode: 'cors', // this cannot be 'no-cors'
-    headers: {'Content-Type': 'application/json'}, //NOT SURE ABOUT THIS PART
+    headers: {'Content-Type': 'application/json'},
     body: JSON.stringify({
       nickname: data.nickname,
       message: data.message,

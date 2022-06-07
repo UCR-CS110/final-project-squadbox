@@ -24,7 +24,7 @@ const Searchbar = (props) => {
     <form onSubmit={handleSubmit(onSubmit)} className="w-full">
       <div className="flex flex-row">
         <TextInput label="search" name="search" register={register} required={true} placeholder="Search Here" />
-        <button type="submit">Search MESSAGE</button>
+        <button type="submit">SEARCH MESSAGE</button>
       </div>
     </form>
   );
