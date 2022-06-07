@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
+import DeleteButton from '../components/deleteButton';
 
 const MessageList = (props) => {
   const [messages, setMessages] = useState([]);
@@ -32,7 +33,7 @@ const MessageList = (props) => {
     return (
         <div >
             This is my message list
-            {messages.map(message => <div>{message.nickname} {message.message} {message.vote} {message.timestamp}</div>)}
+            {messages.map(message => <div>{message.nickname} {message.message} {message.vote} {message.timestamp} <DeleteButton message={message.message}/> </div>)}
             <br></br>
         </div>
     );
