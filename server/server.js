@@ -98,7 +98,7 @@ app.get("/getRooms", function(req, res){
 
 app.get("/getMessages/:roomId", function(req, res){
     console.log(req.params.roomId)
-    Message.find({roomID: req.params.roomId}).lean().then(items => {
+    Message.find({roomName: req.params.roomId}).lean().then(items => {
         res.json(items)
     })
 })
