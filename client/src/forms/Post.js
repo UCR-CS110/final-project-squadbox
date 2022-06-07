@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from "react-hook-form";
 import { yupResolver } from '@hookform/resolvers/yup';
 import * as yup from "yup";
-import { TextInput } from '../form-components';
+import { TextInput, FormSubmit } from '../form-components';
 
 const schema = yup.object({
   name: yup.string().required(),
@@ -14,10 +14,10 @@ const Post = ({ onSubmit }) => {
     });
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="w-full">
-        <TextInput label="Room Name" name="name" register={register} required={true} placeholder="Room name" />
+    <form onSubmit={handleSubmit(onSubmit)} className="w-full flex-row">
+        <TextInput name="name" register={register} required={true} placeholder="Room name" />
         {errors.name ? errors.name.message : ''}
-        <button type="submit">Create Post</button>
+        <FormSubmit text="Create Room"/>
     </form>
   );
 
