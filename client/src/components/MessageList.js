@@ -3,6 +3,8 @@ import { Link } from 'react-router-dom';
 import DeleteButton from '../components/deleteButton';
 import UpvoteButton from './upvoteButton';
 import DownvoteButton from './downvoteButton';
+import Moment from 'react-moment';
+import moment from 'moment';
 
 const MessageList = (props) => {
   const [messages, setMessages] = useState([]);
@@ -16,7 +18,7 @@ const MessageList = (props) => {
       setMessages([...messages, {
         nickname: message.nickname,
         message: message.message,
-        timestamp: message.timestamp,
+        timestamp: moment(message.timestamp).format('HH/MM MM/DD/YY'),
         vote: message.vote,
         roomName: message.roomName
       }])
@@ -40,17 +42,5 @@ const MessageList = (props) => {
         </div>
     );
 }
-
-//var rooms;
-
-
-
- // const RoomListArray = rooms.map((data) => {
-   // return (
-     // <div>
-       // <Link to="/room/:{data.id}" />
-        //</div>
-    //)
-  //})
 
 export default MessageList;
