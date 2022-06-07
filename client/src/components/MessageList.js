@@ -1,6 +1,10 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import DeleteButton from '../components/deleteButton';
+import UpvoteButton from './upvoteButton';
+import DownvoteButton from './downvoteButton';
+import Moment from 'react-moment';
+import moment from 'moment';
 import EditButton from '../components/EditButton';
 
 const MessageList = (props) => {
@@ -14,7 +18,7 @@ const MessageList = (props) => {
       setMessages([...messages, {
         nickname: message.nickname,
         message: message.message,
-        timestamp: message.timestamp,
+        timestamp: moment(message.timestamp).format('HH/MM MM/DD/YY'),
         vote: message.vote,
         roomName: message.roomName
       }])
@@ -27,25 +31,14 @@ const MessageList = (props) => {
     .then(updateMessages);
   }
 
-  return (
-      <div >
-          This is my message list
-          {messages.map(message => <div>{message.nickname} {message.message} {message.vote} {message.timestamp} <DeleteButton message={message.message}/> <EditButton message={message.message} roomId={props.roomId}/> </div>)}
-          <br></br>
-      </div>
-  );
+
+    return (
+        <div >
+            This is my message list
+            {messages.map(message => <div>{message.nickname} {message.message} {message.vote} {message.timestamp}<UpvoteButton message={message.message}/><DownvoteButton message={message.message}/> <DeleteButton message={message.message}/></div>)}
+            <br></br>
+        </div>
+    );
 }
-
-//var rooms;
-
-
-
- // const RoomListArray = rooms.map((data) => {
-   // return (
-     // <div>
-       // <Link to="/room/:{data.id}" />
-        //</div>
-    //)
-  //})
 
 export default MessageList;
