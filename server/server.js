@@ -91,8 +91,12 @@ app.post("/searchMessage", function(req, res){
 
 app.post("/editMessage", function(req, res){
     console.log("Tries to edit message")
-    Message.updateOne({message: req.body.message, roomName:req.body.roomId},  {$set: { message: req.body.newMessage }});
-})
+    Message.updateOne(
+        {message: req.body.message, roomName: req.body.roomName},
+        {$set: { message: req.body.newMessage }}, function(err, obj){
+            if(err) throw err;}
+        );
+});
 
 app.get("/getRooms", function(req, res){
     Room.find().lean().then(items => {
