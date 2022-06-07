@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import DeleteButton from '../components/deleteButton';
+import EditButton from '../components/EditButton';
 
 const MessageList = (props) => {
   const [messages, setMessages] = useState([]);
 
-  //setInterval(function(){getmessages()}, 10000);
-    setTimeout(getmessages, 10000)
+  setTimeout(getmessages, 10000)
   const updateMessages = (messages) => {
     setMessages([]);
     messages.forEach( (message) => {
@@ -21,22 +21,19 @@ const MessageList = (props) => {
     })
   }
 
-   async function getmessages(){
-    //  let rooms;
-      console.log("This is stupid")
-       await fetch(`http://localhost:8080/getMessages/${props.roomId}`)
-      .then(response=>response.json())
-      .then(updateMessages);
-    }
+  async function getmessages(){
+    await fetch(`http://localhost:8080/getMessages/${props.roomId}`)
+    .then(response=>response.json())
+    .then(updateMessages);
+  }
 
-
-    return (
-        <div >
-            This is my message list
-            {messages.map(message => <div>{message.nickname} {message.message} {message.vote} {message.timestamp} <DeleteButton message={message.message}/> </div>)}
-            <br></br>
-        </div>
-    );
+  return (
+      <div >
+          This is my message list
+          {messages.map(message => <div>{message.nickname} {message.message} {message.vote} {message.timestamp} <DeleteButton message={message.message}/> <EditButton message={message.message} roomId={props.roomId}/> </div>)}
+          <br></br>
+      </div>
+  );
 }
 
 //var rooms;
