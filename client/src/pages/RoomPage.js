@@ -8,18 +8,41 @@ import { CommentForm } from '../forms';
 import { fetchMessages } from '../helpers/api';
 
 const RoomPage = () => {
+  const [allMessages, setAllMessages] = useState([]);
   const [messages, setMessages] = useState([]);
+  const [search, setSearch] = useState("");
+
+  const getMessages = async () => {
+    return await fetchMessages(roomId);
+  }
 
   const refreshMessages = async () => {
     fetchMessages(roomId)
-    .then(fetchedMessages => setMessages(fetchedMessages));
+    .then(fetchedMessages => setAllMessages(fetchedMessages));
   }
 
   setTimeout(refreshMessages , 10000);
 
   useEffect( () => {
-    refreshMessages();
+    const initialFetch = async () => {
+      let newMessages = await getMessages();
+      setAllMessages(newMessages);
+      setMessages(newMessages);
+    }
+    initialFetch();
   }, []);
+
+  useEffect( () => {
+    if (search !== "") {
+      let filteredMessages = allMessages.filter((msg) => {
+        return msg.message.indexOf(search) !== -1;
+      });
+      setMessages(filteredMessages);
+    }
+    else {
+      setMessages(allMessages);
+    }
+  }, [search]);
 
   let { roomId } = useParams();
 
@@ -28,7 +51,7 @@ const RoomPage = () => {
       <Navigator />
       Room #: {roomId}
       <div>
-        {/* <Searchbar roomId={roomId}/> */}
+        <Searchbar setSearch={setSearch}/>
         <CommentForm roomId={roomId}/>
         <MessageList messages={messages}/>
       </div>

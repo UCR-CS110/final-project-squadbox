@@ -7,6 +7,10 @@ const MessageList = ({ messages }) => {
   // const [messages, setMessages] = useState([]);
   // const [search, setSearch] = useState("");
 
+  // useEffect( ()=> {
+  //   console.log(search);
+  // }, [search])
+
   //setInterval(function(){getmessages()}, 10000);
   //   setTimeout(getmessages, 10000)
   // const updateMessages = (messages) => {
@@ -42,24 +46,12 @@ const MessageList = ({ messages }) => {
 
     return (
         <div >
-            {/* <Searchbar roomId={props.roomId} setMessages={setMessages} setSearch={setSearch}/> */}
+            {/* <Searchbar setSearch={setSearch}/> */}
             This is my message list
             {messages.map(message => <div>{message.nickname} {message.message} {message.vote} {message.timestamp}</div>)}
             <br></br>
         </div>
     );
 }
-
-//var rooms;
-
-
-
- // const RoomListArray = rooms.map((data) => {
-   // return (
-     // <div>
-       // <Link to="/room/:{data.id}" />
-        //</div>
-    //)
-  //})
 
 export default MessageList;
