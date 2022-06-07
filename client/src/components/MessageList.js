@@ -5,12 +5,12 @@ import UpvoteButton from './upvoteButton';
 import DownvoteButton from './downvoteButton';
 import Moment from 'react-moment';
 import moment from 'moment';
+import EditButton from '../components/EditButton';
 
 const MessageList = (props) => {
   const [messages, setMessages] = useState([]);
 
-  //setInterval(function(){getmessages()}, 10000);
-    setTimeout(getmessages, 10000)
+  setTimeout(getmessages, 10000)
   const updateMessages = (messages) => {
     setMessages([]);
     messages.forEach( (message) => {
@@ -25,13 +25,11 @@ const MessageList = (props) => {
     })
   }
 
-   async function getmessages(){
-    //  let rooms;
-      console.log("This is stupid")
-       await fetch(`http://localhost:8080/getMessages/${props.roomId}`)
-      .then(response=>response.json())
-      .then(updateMessages);
-    }
+  async function getmessages(){
+    await fetch(`http://localhost:8080/getMessages/${props.roomId}`)
+    .then(response=>response.json())
+    .then(updateMessages);
+  }
 
 
     return (
