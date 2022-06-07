@@ -11,3 +11,8 @@ export async function fetchRooms() {
   let res = await axios.get('http://localhost:8080/getRooms');
   return res.data;
 }
+
+export async function fetchMessages(roomId) {
+  let res = await axios.get(`http://localhost:8080/getMessages/${roomId}`);
+  return res.data;
+}
