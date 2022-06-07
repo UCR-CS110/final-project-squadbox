@@ -8,13 +8,13 @@ import { CommentForm } from '../forms';
 
 const RoomPage = () => {
   let { roomId } = useParams();
-  let room = true;
-  return room ? (
+  // let room = true;
+  return roomId ? (
     <div>
       <Navigator />
       Room #: {roomId}
       <div>
-        <Searchbar roomId={roomId}/>
+        {/* <Searchbar roomId={roomId}/> */}
         <CommentForm roomId={roomId}/>
         <MessageList roomId={roomId}/>
       </div>
