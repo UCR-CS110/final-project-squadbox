@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 const MessageList = (props) => {
   const [messages, setMessages] = useState([]);
 
-  setInterval(function(){getmessages()}, 10000);
-
+  //setInterval(function(){getmessages()}, 10000);
+    setTimeout(getmessages, 10000)
   const updateMessages = (messages) => {
     setMessages([]);
     messages.forEach( (message) => {
@@ -20,9 +20,10 @@ const MessageList = (props) => {
     })
   }
 
-  async function getmessages(){
+   async function getmessages(){
     //  let rooms;
-      await fetch(`http://localhost:8080/getMessages/${props.roomId}`)
+      console.log("This is stupid")
+       await fetch(`http://localhost:8080/getMessages/${props.roomId}`)
       .then(response=>response.json())
       .then(updateMessages);
     }
