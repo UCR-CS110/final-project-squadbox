@@ -92,7 +92,9 @@ app.post("/downvoteMessage/:message", function(req, res){
 });
 
 app.post("/searchMessage", function(req, res){
-    Message.find({message: req.body.message, roomName:req.body.roomId}).lean.then(items => {
+    let roomId = req.body.roomId;
+    let message = req.body.message;
+    Message.find({ $text: { $search: message}, roomName: roomId }).lean().then(items => { //r $text: { $search: req.body.message},
         res.json(items)
     })
 })
@@ -114,8 +116,6 @@ app.get("/getRooms", function(req, res){
 
 
 app.get("/getMessages/:roomId", function(req, res){
-   // console.log("here")
-  //  console.log(req.params.roomId)
     Message.find({roomName: req.params.roomId}).lean().then(items => {
         res.json(items)
     })
