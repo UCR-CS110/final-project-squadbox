@@ -38,7 +38,9 @@ const HomePage = () => {
         <div>
           <PostForm onSubmit={onSubmit}/>
         </div>
+        <div className="mt-10">
           <RoomList rooms={rooms}/>
+        </div>
       </div>
     </>
   );
