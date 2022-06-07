@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link } from 'react-router-dom';
 import DeleteButton from '../components/deleteButton';
+import UpvoteButton from './upvoteButton';
+import DownvoteButton from './downvoteButton';
 
 const MessageList = (props) => {
   const [messages, setMessages] = useState([]);
@@ -33,7 +35,7 @@ const MessageList = (props) => {
     return (
         <div >
             This is my message list
-            {messages.map(message => <div>{message.nickname} {message.message} {message.vote} {message.timestamp} <DeleteButton message={message.message}/> </div>)}
+            {messages.map(message => <div>{message.nickname} {message.message} {message.vote} {message.timestamp}<UpvoteButton message={message.message}/><DownvoteButton message={message.message}/> <DeleteButton message={message.message}/></div>)}
             <br></br>
         </div>
     );

@@ -69,18 +69,26 @@ app.post("/createMessage", function(req, res){
 
 
 
-app.post("/upvoteMessage", function(req, res){
+app.post("/upvoteMessage/:message", function(req, res){
     //newMessage.save().then(console.log("Message has been added!")).catch(err => console.log("Error when creating room!"))
-    Message.updateOne({nickname: req.body.nickname},
-                    {message: req.body.message},
-                    {$set: {'vote': req.body.vote+1}});
+  // console.log("got to post")
+    Message.updateOne(
+                    { message: req.params.message },
+                    { $inc: {vote: +1 } }, function(err, obj){
+                    if (err) throw err;}
+                  //  console.log("1 document upvoted");}
+    )
 });
 
-app.post("/downvoteMessage", function(req, res){
+app.post("/downvoteMessage/:message", function(req, res){
     //newMessage.save().then(console.log("Message has been added!")).catch(err => console.log("Error when creating room!"))
-    Message.updateOne({nickname: req.body.nickname},
-                    {message: req.body.message},
-                    {$set: {'vote': req.body.vote-1}});
+    //console.log("got to post")
+    Message.updateOne(
+                    { message: req.params.message },
+                    { $inc: {vote: -1 } }, function(err, obj){
+                    if (err) throw err;}
+                  //  console.log("1 document upvoted");}
+    )
 });
 
 app.post("/searchMessage", function(req, res){
@@ -97,8 +105,8 @@ app.get("/getRooms", function(req, res){
 
 
 app.get("/getMessages/:roomId", function(req, res){
-    console.log("here")
-    console.log(req.params.roomId)
+   // console.log("here")
+  //  console.log(req.params.roomId)
     Message.find({roomName: req.params.roomId}).lean().then(items => {
         res.json(items)
     })
