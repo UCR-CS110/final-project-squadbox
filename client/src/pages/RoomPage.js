@@ -53,7 +53,7 @@ const RoomPage = () => {
       <div>
         <Searchbar setSearch={setSearch}/>
         <CommentForm roomId={roomId}/>
-        <MessageList messages={messages}/>
+        <MessageList messages={messages} roomId={roomId}/>
       </div>
     </div>
   ) : (
