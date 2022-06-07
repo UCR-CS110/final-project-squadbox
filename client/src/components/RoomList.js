@@ -4,7 +4,7 @@ import Room from '../components/Room';
 const RoomList = ({ rooms }) => {
 
   return (
-    <div className="flex flex-col content-center">
+    <div className="flex flex-col content-center justify-center">
       <h1 className="text-2xl mb-3">Rooms</h1>
       {rooms.map(room => <Room key={room.name} room={room}/>)}
       <br></br>
