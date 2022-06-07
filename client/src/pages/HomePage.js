@@ -14,7 +14,7 @@ const HomePage = () => {
     });
   }
 
-  setInterval(refreshRooms , 10000);
+  setTimeout(refreshRooms , 10000);
 
   const onSubmit = async (data) => {
     console.log(data)

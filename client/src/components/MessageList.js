@@ -7,8 +7,8 @@ const MessageList = (props) => {
   const [messages, setMessages] = useState([]);
   const [search, setSearch] = useState("");
 
-  setInterval(function(){getmessages()}, 10000);
-
+  //setInterval(function(){getmessages()}, 10000);
+    setTimeout(getmessages, 10000)
   const updateMessages = (messages) => {
     // console.log(messages);
     setMessages([]);
