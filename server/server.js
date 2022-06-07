@@ -114,4 +114,11 @@ app.post('/login', function(req, res) {
     });
 });
 
+app.delete('/deleteMessage/:message', function(req, res){
+    Message.remove({message: req.params.message}, function(err, obj) {
+        if (err) throw err;
+        console.log("1 document deleted");
+    });
+})
+
 app.listen(port, () => console.log(`Server listening on http://localhost:${port}`));

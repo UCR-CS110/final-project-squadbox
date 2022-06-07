@@ -6,8 +6,6 @@ const Searchbar = (props) => {
   const { register, handleSubmit, watch, formState: { errors } } = useForm();
 
   const onSubmit = data => {
-    console.log("reaches here too")
-    console.log(data)
     fetch('http://localhost:8080/searchMessage', {
     method: 'POST',
     mode: 'cors', // this cannot be 'no-cors'
