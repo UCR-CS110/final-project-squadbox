@@ -5,17 +5,20 @@ For our project we took our lab 6 and added onto it. Using the MERN stack we cre
 
 ## Team
 Our team conisted of three people:
+
 Ivan Carillo
+
 Kenneth Alvarez
+
 Marco Baez
 
 ## Usage
-Demo: <Link to youtube video>
 
-<Screenshot of application>
-  Screenshot one
-  Screenshot two
-  Screenshot three 
+Screenshots:
+
+![Screenshot](./HomeBeforeSignIn.PNG)
+![Screenshot](./SignInPage.PNG)
+![Screenshot](./RoomPage.PNG) 
 
 
 ## How To Run
