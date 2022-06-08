@@ -5,9 +5,8 @@ import Message from '../components/Message';
 
 const MessageList = ({ messages, roomId }) => {
   return (
-    <div >
-      <h1 className="font-30">Messages</h1>
-      {messages.map(message => <Message roomId={roomId} message={message}/>)}
+    <div className="flex flex-col items-center justify-center w-full">
+      {messages.map(message => <Message key={message._id} roomId={roomId} message={message}/>)}
       <br></br>
     </div>
   );

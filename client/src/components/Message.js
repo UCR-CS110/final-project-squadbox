@@ -1,14 +1,13 @@
 import React from 'react'
-import DeleteButton from '../components/deleteButton';
 import UpvoteButton from './upvoteButton';
 import DownvoteButton from './downvoteButton';
-import EditButton from '../components/EditButton';
 import Moment from 'react-moment';
+import MessageButtons from './MessageButtons';
 
 const Message = ({ message, roomId }) => {
 
   return (
-    <div className="border border-black max-w-3xl flex flex-row justify-between m-3 p-1">
+    <div className="border border-black max-w-3xl flex flex-row justify-between m-3 p-1 w-full">
       <div>
         <div className="flex flex-row">
           <div className="font-bold mr-2">{message.nickname}</div>
@@ -18,7 +17,7 @@ const Message = ({ message, roomId }) => {
           {message.message}
         </div>
         <div>
-          <EditButton roomId={roomId} message={message.message} /> <DeleteButton message={message.message}/>
+          <MessageButtons roomId={roomId} message={message} />
         </div>
       </div>
       

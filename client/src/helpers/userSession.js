@@ -1,28 +1,6 @@
-import { useState } from 'react';
 
-let UserSession = () => {
-  const [username, setUsername] = useState("");
-
-  const getName = () => {
-    if (username === "") {
-      // check local storage
-
-      return "guest";
-    }
-    else {
-      return username;
-    }
-  }
-
-  const setName = (name) => {
-    setUsername(name);
-  }
-
-  return {
-    getUsername: getName,
-    setUsername: setName,
-  }
+export function isLoggedIn() {
+  let username = localStorage.getItem("username");
+  // console.log("Logged in with username: " + username);
+  return username ? username : false;
 }
-
-
-export default UserSession;
