@@ -1,11 +1,8 @@
 import React from 'react';
 import { LoginForm } from '../forms';
 import { Link } from 'react-router-dom';
-import userSession from '../helpers/userSession'
 
 const LoginPage = (props) => {
-  let loggedIn = false;
-
   return (
     <div className="flex flex-col items-center justify-center h-full w-full">
       Squadbox

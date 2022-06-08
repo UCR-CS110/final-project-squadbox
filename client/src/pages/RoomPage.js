@@ -49,11 +49,13 @@ const RoomPage = () => {
   return roomId ? (
     <div>
       <Navigator />
-      Room #: {roomId}
-      <div>
-        <Searchbar setSearch={setSearch}/>
+      <div className="flex"><div className="font-bold mr-1"> Room: </div>{roomId}</div>
+      <div className="flex flex-col justify-center items-center">
         <CommentForm roomId={roomId}/>
-        <MessageList messages={messages} roomId={roomId}/>
+        <div className="border border-solid border-black w-4/5 max-w-5xl mt-4 ">
+          <Searchbar setSearch={setSearch}/>
+          <MessageList messages={messages} roomId={roomId}/>
+        </div>
       </div>
     </div>
   ) : (
